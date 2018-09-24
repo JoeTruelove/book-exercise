@@ -13,6 +13,7 @@ class Book
     private String title;
     private int pages;
     private String refNumber;
+    private int borrowed;
 
     /**
      * Set the author and title fields when this object
@@ -55,31 +56,41 @@ class Book
     {
         if (pages > 1)
         System.out.println(author + " is the author of the book: " + title +
-        ", which contains " + pages + " pages in the book. Reference Number: " + refNumber);
+        ", which contains " + pages + " pages in the book. Reference Number: " + refNumber +
+        ". This book has been borrowed " + borrowed + " amount of times.");
         else
         System.out.println(author + " is the author of the book: " + title +
-        ", which contains " + pages + " page in the book Reference Number: " + refNumber);
+        ", which contains " + pages + " page in the book Reference Number: " + refNumber +
+        ". This book has been borrowed " + borrowed + " amount of times.");
     }
     else
     if (pages > 1)
         System.out.println(author + " is the author of the book: " + title +
-        ", which contains " + pages + " pages in the book.");
+        ", which contains " + pages + " pages in the book." +
+        " This book has been borrowed " + borrowed + " amount of times.");
         else
         System.out.println(author + " is the author of the book: " + title +
-        ", which contains " + pages + " page in the book");
+        ", which contains " + pages + " page in the book" +
+        ". This book has been borrowed " + borrowed + " amount of times.");
     }
     public void setRefNumber(String ref)
     {
-        while(refNumber.length() < 2)
+        if (ref.length() <= 2)
         {
-            System.out.println("Error must be more than 2");
-            refNumber = ref;
+            System.out.println("Error: must be more than 2 characters");
+            
         }
+        else
         refNumber = ref;
         
     }
     public String getRefNumber()
     {
         return refNumber;
+    }
+    public int getBorrowed()
+    {
+        ++borrowed;
+        return borrowed;
     }
 }
